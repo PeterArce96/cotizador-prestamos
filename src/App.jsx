@@ -3,7 +3,7 @@
 // en la función App y antes del return, puede escribir cualquier código de JS, for, funciones, variables
 // etiquetas html que solo tengan apertura, se tienen que cerrar con "/>" al final
 // PROPS - Comunicación entre componentes
-// STATE - cual es el estado de tu app, carrito lleno o vacío, usuario autenticado,etc
+// STATE - variables que se van a cambiar, cual es el estado de tu app, carrito lleno o vacío, usuario autenticado,etc
 // escontramos los state antes del return, ejemplo: cantidad y la función que lo va a modificar es setCantidad, se recomienda ponerle "set" antes del nombre del state para la función
 // la función handleChange, el "handle" es por convención, se le coloca antes luego va el Evento que va a usar, en este caso el onChange.
 
@@ -11,7 +11,12 @@ import { useState } from 'react'
 import Header from "./components/Header"
 
 function App() {
+  // variable que se va a modificar -STATE
   const [cantidad, setCantidad] = useState(10000);
+ // variables que no se van a modificar 
+  const MIN = 0;
+  const MAX = 20000;
+  const STEP = 100;
 
   function handleChange(e) {
     setCantidad(+e.target.value);
@@ -25,6 +30,10 @@ function App() {
         type="range" 
         className="w-full h-6 bg-gray-200 accent-lime-500 hover:accent-lime-600"
         onChange={ handleChange }
+        min={MIN}
+        max={MAX}
+        step={STEP}
+        value={cantidad}
       /> 
 
       <p className='text-center my-10 text-5xl font-extrabold text-indigo-600'>{cantidad}</p>
