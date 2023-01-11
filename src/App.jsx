@@ -10,12 +10,13 @@
 import { useState } from 'react'
 import Header from "./components/Header"
 import Button from './components/Button';
-import {formatearDinero} from './helpers'
+import {formatearDinero, calcularTotalPagar} from './helpers'
 
 function App() {
   // variable que se va a modificar -STATE
   const [cantidad, setCantidad] = useState(10000);
   const [meses, setMeses] = useState(6);
+  const [total, setTotal] = useState(0);
 
  // variables que no se van a modificar 
   const MIN = 0;
