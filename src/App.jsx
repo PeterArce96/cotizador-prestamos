@@ -7,7 +7,9 @@
 // escontramos los state antes del return, ejemplo: cantidad y la función que lo va a modificar es setCantidad, se recomienda ponerle "set" antes del nombre del state para la función
 // la función handleChange, el "handle" es por convención, se le coloca antes luego va el Evento que va a usar, en este caso el onChange.
 
-import { useState } from 'react'
+// useEffect, se ejecuta cuando el componente está listo, toma un array de dependencias, se le puede pasar un state para "escuchar" los cambios que ocurren en ese state, en caso de que el state se actualice useEffect se va a ejecutar nuevamente
+
+import { useState, useEffect } from 'react'
 import Header from "./components/Header"
 import Button from './components/Button';
 import {formatearDinero, calcularTotalPagar} from './helpers'
@@ -17,6 +19,11 @@ function App() {
   const [cantidad, setCantidad] = useState(10000);
   const [meses, setMeses] = useState(6);
   const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    const resultadoTotalPagar = calcularTotalPagar(cantidad,meses);
+    setTotal(resultadoTotalPagar);
+  }, [cantidad, meses])
 
  // variables que no se van a modificar 
   const MIN = 0;
@@ -96,7 +103,7 @@ function App() {
         </h2>
 
         <p className='text-xl text-gray-500 text-center font-bold'>{meses} Meses</p>
-        <p className='text-xl text-gray-500 text-center font-bold'> Total a pagar</p>
+        <p className='text-xl text-gray-500 text-center font-bold'>{formatearDinero(total)} Total a pagar</p>
         <p className='text-xl text-gray-500 text-center font-bold'> Mensuales</p>
       </div>
 
