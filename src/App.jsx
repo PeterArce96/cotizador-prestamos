@@ -63,7 +63,7 @@ function App() {
   }
 
   return (
-    <div className="my-20 max-w-lg mx-auto bg-white shadow p-10">
+    <div className="my-20 max-w-lg mx-auto rounded-xl border-4 border-slate-900 border-solid bg-indigo-900 shadow p-10">
       <Header />
 
       <div className='flex justify-between my-6'>
@@ -88,15 +88,15 @@ function App() {
         value={cantidad}
       /> 
 
-      <p className='text-center my-10 text-5xl font-extrabold text-indigo-600'>
+      <p className='text-center my-10 text-5xl font-extrabold text-lime-500'>
         {formatearDinero(cantidad)}
       </p>
 
-      <h2 className='text-2xl font-extrabold text-gray-500 text-center'>
-        Elige un <span className='text-indigo-600'>Plazo </span> a pagar
+      <h2 className='text-2xl font-extrabold text-white text-center'>
+        Elige un <span className='text-lime-500'>Plazo </span> a pagar
       </h2>
 
-      <select className='mt-5 w-full p-2 bg-white border border-gray-300 rounded-lg text-center text-xl font-bold text-gray-500'
+      <select className='mt-5 w-full p-2 bg-slate-700 border border-gray-300 rounded-lg text-center text-xl font-bold text-white'
       value={meses}
       onChange= {e => setMeses(+e.target.value)}>
         <option value="6">6 Meses</option>
@@ -104,14 +104,14 @@ function App() {
         <option value="24">24 Meses</option>
       </select>
 
-      <div className='my-5 space-y-3 bg-gray-50 p-5'>
-        <h2 className='text-2xl font-extrabold text-gray-500 text-center'>
-          Resumen <span className='text-indigo-600'>de pagos </span>
+      <div className='my-5 space-y-3 bg-slate-900 p-5 rounded-lg border'>
+        <h2 className='text-2xl font-extrabold text-white text-center'>
+          Resumen <span className='text-lime-500'>de pagos </span>
         </h2>
 
-        <p className='text-xl text-gray-500 text-center font-bold'>{meses} Meses</p>
-        <p className='text-xl text-gray-500 text-center font-bold'>{formatearDinero(total)} Total a pagar</p>
-        <p className='text-xl text-gray-500 text-center font-bold'>{formatearDinero(pago)} Mensuales</p>
+        <p className='text-xl text-white text-center font-bold'><span className='text-lime-500'>{meses}</span> Meses</p>
+        <p className='text-xl text-white text-center font-bold'><span className='text-lime-500'>{formatearDinero(total)}</span> Total a pagar</p>
+        <p className='text-xl text-white text-center font-bold'><span className='text-lime-500'>{formatearDinero(pago)}</span> Mensuales</p>
       </div>
 
     </div>
